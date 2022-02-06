@@ -1,0 +1,61 @@
+public class KosmonauciAZtest {
+    public static void main(String [] args){
+    
+        int [][] askills={{1,4},{2,3,4},{3,5},{1,2,5}};
+        int[] astro={1,2,3,4,5};
+        
+        int pierwszy=0;
+         ArrayList<Integer> nastatku = new ArrayList<Integer>();
+        while(true){
+            if(pierwszy==astro.length)
+                break;
+            System.out.println("Analizowany atro"+ astro[pierwszy]);
+            
+            int skill=0;
+            for(int i=0; i<askills.length; i++){
+                for(int j=0;j<askills[i].length;j++){
+                    if(astro[pierwszy]==askills[i][j])
+                        skill++;
+                }
+            }
+            
+            System.out.println(astro[pierwszy+ skill]);
+            
+            if(skill>=1)
+            {
+                nastatku.add(astro[pierwszy]);
+                System.out.println(nastatku.toString());
+            }
+            else
+            {
+                pierwszy++;
+                continue;
+            }
+            int match=0;
+            for(int i=0;i<askills.length;i++){
+                for(int j=0;j<askills[i].length; j++){
+                    if(nastatku.contains(askills[i][j])){
+                        match++;
+                        break;
+                    }
+                    
+                }
+            }
+            
+            System.out.println(""+ match);
+            if(match==askills.length)
+                break;
+            pierwszy++;
+        }
+                if(pierwszy==astro.length)
+                    System.out.print("Brak rozwiązania");
+                else
+                    System.out.println("Mogą lecieć"+ nastatku.toString());
+        
+                
+        
+        
+        
+    }
+            
+}
