@@ -1,0 +1,58 @@
+public class LodyMC {
+    public static void main(String[] args)
+{
+
+    int tab[][]= new int[][] {
+        {0, 7, 20, 21, 12, 23},
+        {27, 0, 13,16, 46, 5},
+        {53, 15, 0, 25, 27, 6},
+        {16, 2, 35, 0, 47, 10},
+        {31, 29, 5, 18, 0, 4},
+        {28, 24, 1, 17, 5, 0}
+    };
+    
+    ArrayList<Integer> best = new ArrayList<>();
+    int bestSum = Integer.MAX_VALUE;
+    
+    ArrayList<Integer> res = new ArrayList<>();
+    res.add(0);
+    res.add(1);
+    res.add(2);
+    res.add(3);
+    res.add(4);
+    res.add(5);    
+    
+    
+    for (int iters = 0; iters < 100; iters++) {
+        Collections.shuffle(res); 
+        int suma = 0;
+        for (int i = 0; i < res.size(); i++) {
+            int from = res.get(i);
+            int to;
+            if (i == res.size() - 1)
+                to = res.get(0);
+            else
+                to = res.get(i + 1);
+
+            int cost = tab[from][to];
+            suma += cost;                
+        }
+        
+        if (bestSum > suma) {
+            bestSum = suma;
+            best.clear();
+            best.addAll(res);
+        }
+        for (int i = 0; i < res.size(); i++)
+            System.out.print((res.get(i) + 1) + " ");
+        System.out.print((res.get(0) + 1) + " ");
+        System.out.println(": " + suma);
+    }
+    
+    System.out.println("best: ");
+    for (int i = 0; i < best.size(); i++)
+            System.out.print((best.get(i) + 1) + " ");
+        System.out.print((best.get(0) + 1) + " ");
+        System.out.println(": " + bestSum);
+}
+}
