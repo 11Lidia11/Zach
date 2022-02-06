@@ -1,0 +1,44 @@
+public class LodyAZ {
+    public static void main(String[] args)
+{
+
+    int tab[][]= new int[][] {
+        {0, 7, 20, 21, 12, 23},
+        {27, 0, 13,16, 46, 5},
+        {53, 15, 0, 25, 27, 6},
+        {16, 2, 35, 0, 47, 10},
+        {31, 29, 5, 18, 0, 4},
+        {28, 24, 1, 17, 5, 0}
+    };
+    
+boolean [] done = new boolean[tab.length];
+int res [] = new int[tab.length+1];
+
+res[0]=0;
+res[tab.length-1]=0;
+done[0]=true;
+
+for(int k=0;k<tab.length;k++){
+    int current=res[k-1];
+    int best=0;
+    int bestTime=Integer.MAX_VALUE;
+    for(int i=0;i<tab.length;i++){
+        if(i==current|| done[i]==true)
+            continue;
+        
+        int value=tab[current][i];
+        if(value<bestTime){
+            bestTime=value;
+            best=i;
+        }
+        
+            }
+    res[k]=best;
+    done[best]=true;
+}
+
+for(int j=0;j<tab.length;j++)
+    res[j]++;
+    System.out.println(Arrays.toString(res));
+    }
+    }
