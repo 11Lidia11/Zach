@@ -1,0 +1,54 @@
+
+public class ResztaMCtest {
+public static void main(String[] args)throws IOException{
+    InputStreamReader kasa = new InputStreamReader(System.in);
+    BufferedReader wejscie = new BufferedReader(kasa);
+    String tekst;
+    Random losuj = new Random();
+    int [] monety={100,200,500,20,10,50,2,1,5};
+    int liczbalosowan=100;
+    int limitwydanychmonet=1000;
+    int minliczbawydanychmonet=limitwydanychmonet;
+    int [] minwydanemonet=new int[limitwydanychmonet];
+    int [] wydanemonety= new int[limitwydanychmonet];
+    int moneta,zl,gr,reszta;
+    
+    System.out.println("Podaj reszte");
+    System.out.println("zl");
+    tekst=wejscie.readLine();
+    zl=Integer.parseInt(tekst);
+        System.out.println("gr");
+    tekst=wejscie.readLine();
+    gr=Integer.parseInt(tekst);
+
+for(int i=0;i<liczbalosowan;i++){
+    int liczbawydanychmonet=0;
+    reszta=100*zl+gr;
+    while((reszta>0)&&liczbawydanychmonet<limitwydanychmonet){
+        moneta=monety[losuj.nextInt(monety.length)];
+        if(reszta>=monety[i]){
+            wydanemonety[liczbawydanychmonet]=moneta;
+            reszta=reszta-moneta;
+            liczbawydanychmonet++;
+        }
+    }
+    
+    if(liczbawydanychmonet<minliczbawydanychmonet){
+        minliczbawydanychmonet=liczbawydanychmonet;
+        for(int j=0;j<liczbawydanychmonet;j++)
+            minwydanemonet[j]=wydanemonety[j];
+        
+    }
+}
+
+if(minliczbawydanychmonet<limitwydanychmonet){
+    System.out.println("Reszta");
+    for(int j=0;j<minliczbawydanychmonet;j++)
+        System.out.println( minwydanemonet[j]/100.0+ "");
+}
+else System.out.println("Nie znaleziono rozwiązania");
+
+}
+
+
+}   
