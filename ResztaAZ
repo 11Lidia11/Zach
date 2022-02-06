@@ -1,0 +1,42 @@
+public class ResztaAZ {
+public static void main(String[] args) throws IOException {
+    InputStreamReader kasa = new InputStreamReader(System.in);
+    BufferedReader wejscie = new BufferedReader(kasa);
+    String tekst;
+    
+    final int[] moneta = {500,200,100,50,20,10,5,2,1};
+    int zl,gr,reszta, i=0;
+    int zliczaj[] = new int[moneta.length]    ;    
+    
+    
+    System.out.println("Wprowadz hajs");
+     System.out.println("zł");
+     tekst= wejscie.readLine();
+     zl = Integer.parseInt(tekst);
+     System.out.println("gr");
+     tekst= wejscie.readLine();
+     gr = Integer.parseInt(tekst);
+     
+      System.out.println("Wydana kasa");
+      
+      reszta=100*zl+gr;
+      
+      while(reszta>0){
+          if(reszta>=moneta[i]){
+          System.out.println(moneta[i]/100+ " ");
+        
+          zliczaj[i]++;
+           reszta=reszta-moneta[i];
+          
+      }
+          else i++;    
+      }
+
+    System.out.println();
+        System.out.println();
+        for(int j=0;j<moneta.length;j++)
+         System.out.println(moneta[j]/100.0 + "\t" + zliczaj[j]);
+    
+    
+} 
+}
