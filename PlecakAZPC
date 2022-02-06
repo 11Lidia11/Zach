@@ -1,0 +1,40 @@
+public class PlecakAZPCtest {
+public static void main(String[] args){
+    int n=6;
+    int maxv=10;
+    int[] w ={1,2,3,4,5,6};
+    int[] v={1,2,3,4,5,6};
+    
+    boolean[] rozw = new boolean[n];
+    for(int i=0;i<n;i++)rozw[i]=false;
+    int sumw=0;
+    int sumv = 0;
+    while(true){
+    
+        
+    int maxpoz=-1;    
+    double maxw=0;
+    for(int i=0;i<n;i++){
+        if(rozw[i]){
+            
+                    
+            if((sumv+v[i]<=maxv)&&(w[i]>maxw)){
+                maxw=w[i];
+                maxpoz=i;
+            };
+        }
+    }
+    if(maxpoz>-1){
+        rozw[maxpoz]=true;
+        sumw=sumw+w[maxpoz];
+        sumv=sumv+v[maxpoz];
+    }
+    else break;
+    }
+    System.out.println("Wartosci optymalne zapakownegoplecaka"+ sumw);
+    System.out.println("Przedmioty w plecaku");
+    for(int i=0;i<n;i++)
+        System.out.println(i+" ");
+}
+
+}
